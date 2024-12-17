@@ -1,3 +1,4 @@
+using AutomationExercise.SeleniumNUnit.Constants;
 using AutomationExercise.SeleniumNUnit.Drivers;
 using AutomationExercise.SeleniumNUnit.Models.Browsers;
 using AutomationExercise.SeleniumNUnit.Pages;
@@ -22,7 +23,7 @@ public class AuthenticationTests
         signupPage = new SignupPage(driver);
         accountCreatedPage = new AccountCreatedPage(driver);
 
-        homePage.GoTo();
+        homePage.NavigateTo(Routes.home);
     }
 
     [TearDown]
