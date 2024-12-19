@@ -28,7 +28,7 @@ jobs:
         run: dotnet build
 
       - name: Run tests
-        run: dotnet test"
+        run: dotnet test
 
       - name: Publish test results
         if: always()
