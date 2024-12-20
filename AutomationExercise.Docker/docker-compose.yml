@@ -1,0 +1,16 @@
+version: '3'
+services:
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"
+      - "5900:5900" # Optional for VNC access
+    volumes:
+      - /dev/shm:/dev/shm # Shared memory for Chrome
+
+  test:
+    build:
+      context: ./ # Path to your project folder
+      dockerfile: Dockerfile # Specify the Dockerfile if named differently
+    depends_on:
+      - selenium
