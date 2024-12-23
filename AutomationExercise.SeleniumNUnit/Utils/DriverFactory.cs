@@ -5,7 +5,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Safari;
 
-namespace AutomationExercise.SeleniumNUnit.Drivers;
+namespace AutomationExercise.SeleniumNUnit.Utils;
 
 public class DriverFactory
 {

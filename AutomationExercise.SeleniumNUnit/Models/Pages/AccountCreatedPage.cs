@@ -11,4 +11,9 @@ public class AccountCreatedPage(IWebDriver driver) : BasePage(driver)
     {
         _driver.FindElement(ContinueButton).Click();
     }
+
+    public string GetAccountCreatedText()
+    {
+        return _driver.FindElement(AccountCreatedMessage).Text;
+    }
 }
