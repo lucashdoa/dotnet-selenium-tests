@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ExtentReport
-          path: Reports/ExtentReport.html
+          path: AutomationExercise.SeleniumNUnit/Reports/ExtentReport.html
