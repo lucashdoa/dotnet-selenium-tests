@@ -81,7 +81,7 @@ public class AuthenticationTests
             accountCreatedPage.Continue();
             homePage.DeleteAccount();
 
-            Assert.AreEqual("ACCOUNT DELETEDA!", accountDeletedPage.GetAccountDeletedText());
+            Assert.AreEqual("ACCOUNT DELETED!", accountDeletedPage.GetAccountDeletedText());
             ReportManager.AttachScreenshot(screenshotHelper.CaptureScreenshot("account-deleted-successfully"));
             ReportManager.Log("Deleted account successfully");
         }
