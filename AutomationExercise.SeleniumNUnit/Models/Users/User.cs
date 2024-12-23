@@ -1,4 +1,4 @@
-namespace AutomationExericse.SeleniumNUnit.Models.Users;
+namespace AutomationExercise.SeleniumNUnit.Models.Users;
 
 public class User(
     string name,

@@ -1,4 +1,4 @@
-using AutomationExericse.SeleniumNUnit.Models.Users;
+using AutomationExercise.SeleniumNUnit.Models.Users;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
