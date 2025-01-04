@@ -6,6 +6,7 @@ namespace AutomationExercise.SeleniumNUnit.Pages;
 
 public class SignupPage(IWebDriver driver) : BasePage(driver)
 {
+    private readonly IWebDriver driver = driver;
     private readonly By signupLoginButton = By.CssSelector("a[href*=login]");
     private readonly By signupNameInput = By.CssSelector("[data-qa=signup-name]");
     private readonly By signupEmailInput = By.CssSelector("[data-qa=signup-email]");
@@ -30,48 +31,48 @@ public class SignupPage(IWebDriver driver) : BasePage(driver)
 
     public void SignupUserWithEmail(string user, string email)
     {
-        _driver.FindElement(signupLoginButton).Click();
-        _driver.FindElement(signupNameInput).SendKeys(user);
-        _driver.FindElement(signupEmailInput).SendKeys(email);
-        _driver.FindElement(signupButton).Click();
+        driver.FindElement(signupLoginButton).Click();
+        driver.FindElement(signupNameInput).SendKeys(user);
+        driver.FindElement(signupEmailInput).SendKeys(email);
+        driver.FindElement(signupButton).Click();
     }
 
     public void EnterAccountInformation(User user)
     {
         if (user.isMale)
         {
-            _driver.FindElement(genderMaleRadio).Click();
+            driver.FindElement(genderMaleRadio).Click();
         }
         else
         {
-            _driver.FindElement(genderFemaleRadio).Click();
+            driver.FindElement(genderFemaleRadio).Click();
         }
 
-        _driver.FindElement(passwordInput).SendKeys(user.password);
+        driver.FindElement(passwordInput).SendKeys(user.password);
 
-        new SelectElement(_driver.FindElement(birthDaySelect)).SelectByValue(user.birthDay);
-        new SelectElement(_driver.FindElement(birthMonthSelect)).SelectByValue(user.birthMonth);
-        new SelectElement(_driver.FindElement(birthYearSelect)).SelectByValue(user.birthYear);
+        new SelectElement(driver.FindElement(birthDaySelect)).SelectByValue(user.birthDay);
+        new SelectElement(driver.FindElement(birthMonthSelect)).SelectByValue(user.birthMonth);
+        new SelectElement(driver.FindElement(birthYearSelect)).SelectByValue(user.birthYear);
 
         if (user.isSubscribedNewsletter)
         {
-            _driver.FindElement(newsletterSelect).Click();
+            driver.FindElement(newsletterSelect).Click();
         }
 
         if (user.isSubscribedSpecialOffers)
         {
-            _driver.FindElement(offersSelect).Click();
+            driver.FindElement(offersSelect).Click();
         }
 
-        _driver.FindElement(firstNameInput).SendKeys(user.address.firstName);
-        _driver.FindElement(lastNameInput).SendKeys(user.address.firstName);
-        _driver.FindElement(addressInput).SendKeys(user.address.fullAddress);
-        _driver.FindElement(countrySelect).SendKeys(user.address.country);
-        _driver.FindElement(stateInput).SendKeys(user.address.state);
-        _driver.FindElement(cityInput).SendKeys(user.address.city);
-        _driver.FindElement(zipcodeInput).SendKeys(user.address.zipcode);
-        _driver.FindElement(mobileNumberInput).SendKeys(user.address.phone);
+        driver.FindElement(firstNameInput).SendKeys(user.address.firstName);
+        driver.FindElement(lastNameInput).SendKeys(user.address.firstName);
+        driver.FindElement(addressInput).SendKeys(user.address.fullAddress);
+        driver.FindElement(countrySelect).SendKeys(user.address.country);
+        driver.FindElement(stateInput).SendKeys(user.address.state);
+        driver.FindElement(cityInput).SendKeys(user.address.city);
+        driver.FindElement(zipcodeInput).SendKeys(user.address.zipcode);
+        driver.FindElement(mobileNumberInput).SendKeys(user.address.phone);
 
-        _driver.FindElement(createAccountButton).Click();
+        driver.FindElement(createAccountButton).Click();
     }
 }

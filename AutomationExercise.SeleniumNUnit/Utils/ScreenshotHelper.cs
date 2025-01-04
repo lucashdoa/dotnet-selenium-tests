@@ -11,10 +11,9 @@ public class ScreenshotHelper(IWebDriver driver)
         var screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
         string filePath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Screenshots", $"{screenshotName}.png");
 
-        // Ensure the directory exists
-        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-
+        Directory.CreateDirectory(Path.GetDirectoryName(filePath) ?? AppContext.BaseDirectory);
         screenshot.SaveAsFile(filePath);
+
         return filePath;
     }
 }
