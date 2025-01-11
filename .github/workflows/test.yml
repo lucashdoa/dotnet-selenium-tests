@@ -21,6 +21,9 @@ jobs:
         with:
           dotnet-version: '8.0.403'  # Specify the version of .NET you are using
 
+      - name: Change directory to AutomationExercise.SeleniumNUnit
+        run: cd AutomationExercise.SeleniumNUnit/
+
       - name: Restore dependencies
         run: dotnet restore
 
