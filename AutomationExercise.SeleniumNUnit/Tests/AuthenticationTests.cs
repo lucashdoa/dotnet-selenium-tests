@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 
 namespace AutomationExercise.SeleniumNUnit.Tests;
 
+[TestFixture]
 public class AuthenticationTests
 {
     private IWebDriver driver;
@@ -22,7 +23,6 @@ public class AuthenticationTests
         driver = DriverFactory.CreateDriver(BrowserType.CHROME);
         driver.Manage().Window.Maximize();
 
-        ReportManager.Setup();
         screenshotHelper = new ScreenshotHelper(driver);
 
         homePage = new HomePage(driver);
@@ -36,7 +36,6 @@ public class AuthenticationTests
     [TearDown]
     public void TearDown()
     {
-        ReportManager.Flush();
         driver.Dispose();
     }
 
@@ -75,21 +74,21 @@ public class AuthenticationTests
             signupPage.EnterAccountInformation(user);
             ReportManager.Log("Created account successfully");
 
-            Assert.AreEqual("ACCOUNT CREATED!", accountCreatedPage.GetAccountCreatedText());
+            Assert.That(accountCreatedPage.GetAccountCreatedText(), Is.EqualTo("ACCOUNT CREATED!"));
             ReportManager.AttachScreenshot(screenshotHelper.CaptureScreenshot("account-created-successfully"));
 
             accountCreatedPage.Continue();
             homePage.DeleteAccount();
 
-            Assert.AreEqual("ACCOUNT DELETED!", accountDeletedPage.GetAccountDeletedText());
+            Assert.That(accountDeletedPage.GetAccountDeletedText(), Is.EqualTo("ACCOUNT DELETED!"));
             ReportManager.AttachScreenshot(screenshotHelper.CaptureScreenshot("account-deleted-successfully"));
             ReportManager.Log("Deleted account successfully");
         }
         catch (Exception e)
         {
-            string errorScreenshotPath = screenshotHelper.CaptureScreenshot("TC01_Failed");
-            ReportManager.AttachScreenshot(errorScreenshotPath);
-            ReportManager.FailTest(e.Message);
+            ReportManager.AttachScreenshot(screenshotHelper.CaptureScreenshot("TC01_Failed"));
+            ReportManager.FailTest($"Message: {e.Message} Stack trace: {e.StackTrace}");
+
             throw;
         }
     }

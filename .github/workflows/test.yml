@@ -22,13 +22,13 @@ jobs:
           dotnet-version: '8.0.403'  # Specify the version of .NET you are using
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./AutomationExercise.SeleniumNUnit/AutomationExercise.SeleniumNUnit.csproj
 
       - name: Build project
-        run: dotnet build
+        run: dotnet build ./AutomationExercise.SeleniumNUnit/AutomationExercise.SeleniumNUnit.csproj
 
       - name: Run tests
-        run: dotnet test
+        run: dotnet test ./AutomationExercise.SeleniumNUnit/AutomationExercise.SeleniumNUnit.csproj
 
       - name: Publish test results
         if: always()

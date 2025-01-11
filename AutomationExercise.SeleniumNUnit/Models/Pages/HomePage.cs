@@ -4,10 +4,11 @@ namespace AutomationExercise.SeleniumNUnit.Pages;
 
 public class HomePage(IWebDriver driver) : BasePage(driver)
 {
+    private readonly IWebDriver driver = driver;
     private readonly By DeleteAccountButton = By.CssSelector("[href*='delete_account']");
 
     public void DeleteAccount()
     {
-        _driver.FindElement(DeleteAccountButton).Click();
+        driver.FindElement(DeleteAccountButton).Click();
     }
 }
