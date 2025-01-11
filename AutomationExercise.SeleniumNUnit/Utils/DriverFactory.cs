@@ -27,8 +27,10 @@ public class DriverFactory
             default:
             case BrowserType.CHROME:
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArguments("--disable-headless-mode");
+                chromeOptions.AddArguments("--disable-headless-mode", "--no-sandbox");
                 driver = new ChromeDriver(chromeOptions);
+                 // Set implicit wait time to 10 seconds
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
                 break;
         }
 

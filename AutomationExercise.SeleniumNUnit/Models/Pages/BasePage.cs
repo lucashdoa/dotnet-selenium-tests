@@ -16,6 +16,7 @@ public class BasePage(IWebDriver driver)
     public readonly By APITestingNavigationButton = By.CssSelector("a[href='/api_list']");
     public readonly By VideoTutorialsNavigationButton = By.CssSelector("a[href*='youtube']");
     public readonly By ContactUsNavigationButton = By.CssSelector("a[href='/contact_us']");
+    private readonly By CloseAdButton = By.CssSelector("div[aria-label='Close ad']");
 
     protected IWebDriver Driver { get => driver; set => driver = value; }
 
@@ -44,7 +45,7 @@ public class BasePage(IWebDriver driver)
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator));
             return true;
         }
-        catch(WebDriverTimeoutException)
+        catch (WebDriverTimeoutException)
         {
             return false;
         }
